@@ -2,7 +2,6 @@ package net.leolink.android.androidmvp.mvp.view.recyclerview;
 
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
-import android.view.ViewGroup;
 
 import net.leolink.android.androidmvp.mvp.presenter.ViewHolderPresenter;
 import net.leolink.android.androidmvp.mvp.view.BaseView;
@@ -85,8 +84,4 @@ public abstract class BaseAdapter<T> extends
     public void onViewAttachedToWindow(BaseViewHolder<T, ? extends BaseView, ? extends ViewHolderPresenter> holder) {
         holder.presenter.onViewAttachedToWindow();
     }
-
-    @Override
-    public abstract BaseViewHolder<T, ? extends BaseView, ? extends ViewHolderPresenter> onCreateViewHolder(
-            ViewGroup parent, int viewType);
 }
