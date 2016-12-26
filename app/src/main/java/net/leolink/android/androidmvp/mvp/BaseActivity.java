@@ -9,8 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import net.leolink.android.androidmvp.mvp.presenter.BasePresenter;
 import net.leolink.android.androidmvp.mvp.view.BaseView;
 
-import butterknife.ButterKnife;
-
 /**
  * Base {@link AppCompatActivity Activity} that supports MVP pattern.
  *
@@ -23,10 +21,12 @@ public abstract class BaseActivity<P extends BasePresenter<? extends BaseView>> 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResId());
-        ButterKnife.bind(this);
         mPresenter = createPresenter();
     }
 
+    /**
+     * Override this method to specify layout ID for this Activity.
+     */
     @LayoutRes
     protected abstract int getLayoutResId();
 

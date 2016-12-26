@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 
 import net.leolink.android.androidmvp.mvp.BaseActivity;
 
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity<MainActivityPresenter> implements MainActivityPresenter.MainActivityView {
@@ -22,6 +23,7 @@ public class MainActivity extends BaseActivity<MainActivityPresenter> implements
 
     @Override
     public void setupView() {
+        ButterKnife.bind(this);
         mFragment = (MainFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
     }
 

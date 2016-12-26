@@ -14,6 +14,7 @@ import net.leolink.android.androidmvp.recyclerview.MainFragmentAdapter;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -40,6 +41,7 @@ public class MainFragment extends BaseFragment<MainFragmentPresenter> implements
 
     @Override
     public void setupView() {
+        ButterKnife.bind(this, getView());
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         mAdapter = new MainFragmentAdapter();
         mRecyclerView.setAdapter(mAdapter);

@@ -12,8 +12,6 @@ import android.view.ViewGroup;
 import net.leolink.android.androidmvp.mvp.presenter.BasePresenter;
 import net.leolink.android.androidmvp.mvp.view.BaseView;
 
-import butterknife.ButterKnife;
-
 /**
  * Base {@link Fragment} that supports MVP pattern.
  *
@@ -25,12 +23,18 @@ public abstract class BaseFragment<P extends BasePresenter<? extends BaseView>> 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(getLayoutResId(), container, false);
-        ButterKnife.bind(this, view);
-        mPresenter = createPresenter();
-        return view;
+        return inflater.inflate(getLayoutResId(), container, false);
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mPresenter = createPresenter();
+    }
+
+    /**
+     * Override this method to specify layout ID for this fragment.
+     */
     @LayoutRes
     protected abstract int getLayoutResId();
 
