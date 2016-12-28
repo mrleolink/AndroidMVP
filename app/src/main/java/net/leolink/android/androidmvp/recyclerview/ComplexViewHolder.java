@@ -60,7 +60,7 @@ public class ComplexViewHolder extends BaseViewHolder<Parcelable, ComplexPresent
                 // this is to fix the case where this horizontal view is on screen, user scrolls a little bit, then
                 // rotate screen => scrolling position is not saved because #onSaveViewState hasn't been called called
                 // after user scrolls.
-                // After screen rotation, because data has been already loaded, presenter#onBindViewHolder will be called
+                // After screen rotation, because data has been already loaded, presenter#present will be called
                 // which causes old scroll position being restored.
                 if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                     presenter.saveScrollPosition();
@@ -111,7 +111,7 @@ public class ComplexViewHolder extends BaseViewHolder<Parcelable, ComplexPresent
             ComplexItemViewHolder res = new ComplexItemViewHolder(view);
             res.setPresenter(new ViewHolderPresenter<Void, ComplexItemView>(res) {
                 @Override
-                public void onBindViewHolder(Void item, int pos) {
+                public void present(Void item, int pos) {
                     view.setText("pos " + pos);
                 }
             });
@@ -120,7 +120,7 @@ public class ComplexViewHolder extends BaseViewHolder<Parcelable, ComplexPresent
 
         @Override
         public void onBindViewHolder(BaseViewHolder<Void, ? extends BaseView, ? extends ViewHolderPresenter> holder, int position) {
-            holder.presenter.onBindViewHolder(null, position);
+            holder.presenter.present(null, position);
         }
     }
 

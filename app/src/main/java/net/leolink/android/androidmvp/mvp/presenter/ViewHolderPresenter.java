@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import net.leolink.android.androidmvp.mvp.view.BaseView;
 
 /**
- * Presenter that supports lifecycle of {@link RecyclerView.ViewHolder}.
+ * Base presenter for {@link RecyclerView.ViewHolder#itemView}.
  *
  * @author Leo
  */
@@ -27,7 +27,10 @@ public abstract class ViewHolderPresenter<T, V extends BaseView> extends BasePre
     public void onViewAttachedToWindow() {}
 
     /**
-     * Delegate method of {@link RecyclerView.Adapter#onBindViewHolder(RecyclerView.ViewHolder, int)}
+     * Present {@code data} to the {@link #view}.
+     *
+     * @param data data to present
+     * @param position adapter position
      */
-    public abstract void onBindViewHolder(T item, int position);
+    public abstract void present(T data, int position);
 }

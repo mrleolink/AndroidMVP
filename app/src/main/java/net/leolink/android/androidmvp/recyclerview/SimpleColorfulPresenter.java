@@ -19,7 +19,7 @@ public class SimpleColorfulPresenter extends ViewHolderPresenter<Parcelable, Sim
     }
 
     @Override
-    public void onBindViewHolder(Parcelable data, int pos) {
+    public void present(Parcelable data, int pos) {
         Item item = (Item) data;
         view.setTextView(item.text);
         view.setButtonText(item.button);

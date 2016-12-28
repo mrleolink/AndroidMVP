@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 
 /**
- * Interface definition for presenter that support save/restore state of views.
+ * Interface definition for presenters that support saving/restoring state.
  *
  * @author Leo
  */

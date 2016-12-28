@@ -72,7 +72,7 @@ public abstract class BaseAdapter<T> extends
     @Override
     public void onBindViewHolder(BaseViewHolder<T, ? extends BaseView, ? extends ViewHolderPresenter> holder,
                                  int position) {
-        holder.presenter.onBindViewHolder(mItems.get(position), position);
+        holder.presenter.present(mItems.get(position), position);
     }
 
     @Override

@@ -27,7 +27,7 @@ public class ComplexPresenter extends ViewHolderPresenter<Parcelable, ComplexPre
     }
 
     @Override
-    public void onBindViewHolder(Parcelable item, int pos) {
+    public void present(Parcelable item, int pos) {
         mItem = (ComplexItem) item;
         loadData();
     }
