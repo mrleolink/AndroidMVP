@@ -1,4 +1,4 @@
-package net.leolink.android.androidmvp.mvp;
+package net.leolink.android.androidmvp.mvp.android;
 
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;

@@ -1,4 +1,4 @@
-package net.leolink.android.androidmvp.mvp.view.recyclerview;
+package net.leolink.android.androidmvp.mvp.android.recyclerview;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -14,7 +14,7 @@ import butterknife.ButterKnife;
  * @author Leo
  */
 
-public class BaseViewHolder<T, V extends BaseView, P extends ViewHolderPresenter<T, V>>
+public class BaseViewHolder<M, V extends BaseView, P extends ViewHolderPresenter<M, V>>
         extends RecyclerView.ViewHolder {
 
     public P presenter;

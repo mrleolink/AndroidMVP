@@ -7,8 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import net.leolink.android.androidmvp.Item;
-import net.leolink.android.androidmvp.mvp.view.recyclerview.BaseAdapter;
-import net.leolink.android.androidmvp.mvp.view.recyclerview.BaseViewHolder;
+import net.leolink.android.androidmvp.mvp.android.recyclerview.BaseAdapter;
+import net.leolink.android.androidmvp.mvp.android.recyclerview.BaseViewHolder;
 import net.leolink.android.androidmvp.R;
 import net.leolink.android.androidmvp.mvp.presenter.ViewHolderPresenter;
 import net.leolink.android.androidmvp.mvp.view.BaseView;
@@ -58,14 +58,14 @@ public class MainFragmentAdapter extends BaseAdapter<Parcelable> {
     private SimpleColorfulViewHolder createSimpleColorfulViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_view, parent, false);
         SimpleColorfulViewHolder res = new SimpleColorfulViewHolder(view);
-        res.setPresenter(new SimpleColorfulPresenter(res, viewType == VIEWTYPE_1 ? Color.RED : Color.GREEN));
+        res.setPresenter(new SimpleColorfulPresenter(res, parent.getContext(), viewType == VIEWTYPE_1 ? Color.RED : Color.GREEN));
         return res;
     }
 
     private ComplexViewHolder createComplexViewHolder(ViewGroup parent) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_view_complex, parent, false);
         ComplexViewHolder res = new ComplexViewHolder(view);
-        res.setPresenter(new ComplexPresenter(res));
+        res.setPresenter(new ComplexPresenter(res, parent.getContext()));
         return res;
     }
 }

@@ -13,8 +13,8 @@ import android.widget.Button;
 
 import net.leolink.android.androidmvp.R;
 import net.leolink.android.androidmvp.mvp.presenter.ViewHolderPresenter;
-import net.leolink.android.androidmvp.mvp.view.recyclerview.BaseAdapter;
-import net.leolink.android.androidmvp.mvp.view.recyclerview.BaseViewHolder;
+import net.leolink.android.androidmvp.mvp.android.recyclerview.BaseAdapter;
+import net.leolink.android.androidmvp.mvp.android.recyclerview.BaseViewHolder;
 import net.leolink.android.androidmvp.mvp.view.BaseView;
 
 import java.util.List;
@@ -37,6 +37,7 @@ public class ComplexViewHolder extends BaseViewHolder<Parcelable, ComplexPresent
 
     public ComplexViewHolder(View itemView) {
         super(itemView);
+        setupView();
     }
 
     @Override
@@ -107,11 +108,11 @@ public class ComplexViewHolder extends BaseViewHolder<Parcelable, ComplexPresent
 
         @Override
         public ComplexItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_view_complex_item, parent, false);
+            Button view = (Button) LayoutInflater.from(parent.getContext()).inflate(R.layout.item_view_complex_item, parent, false);
             ComplexItemViewHolder res = new ComplexItemViewHolder(view);
-            res.setPresenter(new ViewHolderPresenter<Void, ComplexItemView>(res) {
+            res.setPresenter(new ViewHolderPresenter<Void, ComplexItemView>(res, parent.getContext()) {
                 @Override
-                public void present(Void item, int pos) {
+                public void present(Void item, int pos, int viewType) {
                     view.setText("pos " + pos);
                 }
             });
@@ -120,7 +121,7 @@ public class ComplexViewHolder extends BaseViewHolder<Parcelable, ComplexPresent
 
         @Override
         public void onBindViewHolder(BaseViewHolder<Void, ? extends BaseView, ? extends ViewHolderPresenter> holder, int position) {
-            holder.presenter.present(null, position);
+            holder.presenter.present(null, position, getItemViewType(position));
         }
     }
 

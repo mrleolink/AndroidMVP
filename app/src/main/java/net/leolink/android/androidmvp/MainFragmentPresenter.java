@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import net.leolink.android.androidmvp.mvp.presenter.BasePresenter;
-import net.leolink.android.androidmvp.mvp.presenter.StatePresenter;
+import net.leolink.android.androidmvp.mvp.presenter.StatefulPresenter;
 import net.leolink.android.androidmvp.mvp.view.BaseView;
 import net.leolink.android.androidmvp.mvp.view.LoadingIndicatorView;
 
@@ -20,7 +20,7 @@ import java.util.List;
  */
 
 public class MainFragmentPresenter extends BasePresenter<MainFragmentPresenter.MainFragmentView>
-        implements StatePresenter {
+        implements StatefulPresenter {
     private Handler mHandler;
     private ArrayList<Parcelable> mItems;
 
@@ -30,11 +30,11 @@ public class MainFragmentPresenter extends BasePresenter<MainFragmentPresenter.M
     }
 
     public void loadItems() {
-        view.setLoadingIndicatorVisible(true);
+        mView.setLoadingIndicatorVisible(true);
         if (mItems != null) {
             Log.e("linhln", "Cache hit!");
-            view.showItems(mItems);
-            view.setLoadingIndicatorVisible(false);
+            mView.showItems(mItems);
+            mView.setLoadingIndicatorVisible(false);
         } else {
             loadFromNetwork();
         }
@@ -47,8 +47,8 @@ public class MainFragmentPresenter extends BasePresenter<MainFragmentPresenter.M
             for (int i = 0; i < 100; i++) {
                 mItems.add(i % 20 != 0 ? new Item("text " + i, "button " + i) : new ComplexItem());
             }
-            view.showItems(mItems);
-            view.setLoadingIndicatorVisible(false);
+            mView.showItems(mItems);
+            mView.setLoadingIndicatorVisible(false);
         }, 2000);
     }
 
@@ -60,7 +60,7 @@ public class MainFragmentPresenter extends BasePresenter<MainFragmentPresenter.M
     @Override
     public void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         mItems = savedInstanceState.getParcelableArrayList("items");
-        view.showItems(mItems);
+        mView.showItems(mItems);
     }
 
 

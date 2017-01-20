@@ -1,5 +1,6 @@
 package net.leolink.android.androidmvp.mvp.presenter;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 
@@ -10,10 +11,12 @@ import net.leolink.android.androidmvp.mvp.view.BaseView;
  *
  * @author Leo
  */
+public abstract class ViewHolderPresenter<M, V extends BaseView> extends BasePresenter<V> {
+    protected final Context mContext;
 
-public abstract class ViewHolderPresenter<T, V extends BaseView> extends BasePresenter<V> {
-    public ViewHolderPresenter(@NonNull V view) {
+    public ViewHolderPresenter(@NonNull V view, @NonNull Context context) {
         super(view);
+        this.mContext = context;
     }
 
     /**
@@ -27,10 +30,16 @@ public abstract class ViewHolderPresenter<T, V extends BaseView> extends BasePre
     public void onViewAttachedToWindow() {}
 
     /**
-     * Present {@code data} to the {@link #view}.
+     * Delegate method of {@link RecyclerView.Adapter#onViewDetachedFromWindow(RecyclerView.ViewHolder)}
+     */
+    public void onViewDetachedFromWindow() {}
+
+    /**
+     * Present {@code data} to the {@link #mView}.
      *
      * @param data data to present
      * @param position adapter position
+     * @param viewType view type of ViewHolder that this presenter is bound to
      */
-    public abstract void present(T data, int position);
+    public abstract void present(M data, int position, int viewType);
 }

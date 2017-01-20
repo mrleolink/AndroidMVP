@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import net.leolink.android.androidmvp.R;
-import net.leolink.android.androidmvp.mvp.view.recyclerview.BaseViewHolder;
+import net.leolink.android.androidmvp.mvp.android.recyclerview.BaseViewHolder;
 
 import butterknife.BindView;
 
@@ -24,6 +24,7 @@ public class SimpleColorfulViewHolder extends BaseViewHolder<Parcelable, SimpleC
 
     public SimpleColorfulViewHolder(@NonNull View itemView) {
         super(itemView);
+        setupView();
     }
 
     @Override

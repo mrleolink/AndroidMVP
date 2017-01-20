@@ -1,4 +1,4 @@
-package net.leolink.android.androidmvp.mvp;
+package net.leolink.android.androidmvp.mvp.android;
 
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
@@ -20,16 +20,16 @@ import net.leolink.android.androidmvp.mvp.view.BaseView;
 public abstract class BaseFragment<P extends BasePresenter<? extends BaseView>> extends Fragment {
     protected P mPresenter;
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mPresenter = createPresenter();
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(getLayoutResId(), container, false);
-    }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        mPresenter = createPresenter();
     }
 
     /**

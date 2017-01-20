@@ -8,7 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import net.leolink.android.androidmvp.mvp.BaseFragment;
+import net.leolink.android.androidmvp.mvp.android.BaseFragment;
 import net.leolink.android.androidmvp.recyclerview.MainFragmentAdapter;
 
 import java.util.List;
@@ -40,19 +40,20 @@ public class MainFragment extends BaseFragment<MainFragmentPresenter> implements
     }
 
     @Override
-    public void setupView() {
-        ButterKnife.bind(this, getView());
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        mAdapter = new MainFragmentAdapter();
-        mRecyclerView.setAdapter(mAdapter);
-    }
-
-    @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if (savedInstanceState != null) {
             mPresenter.onRestoreInstanceState(savedInstanceState);
         }
+        setupView();
+    }
+
+    @Override
+    public void setupView() {
+        ButterKnife.bind(this, getView());
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        mAdapter = new MainFragmentAdapter();
+        mRecyclerView.setAdapter(mAdapter);
     }
 
     @Override

@@ -10,11 +10,10 @@ import net.leolink.android.androidmvp.mvp.view.BaseView;
  * @author Leo
  */
 public abstract class BasePresenter<V extends BaseView> {
-    protected final V view;
+    protected final V mView;
 
     /**
-     * Create a presenter with its associated {@link BaseView view}. The view's {@link BaseView#setupView() setupView()}
-     * is called at the end of this constructor.
+     * Create a presenter with its associated {@link BaseView view}.
      *
      * @param view {@link BaseView view} that will be presented by this presenter.
      * @throws IllegalArgumentException if {@code view} is null.
@@ -23,7 +22,6 @@ public abstract class BasePresenter<V extends BaseView> {
         if (view == null) {
             throw new IllegalArgumentException("View can't be null");
         }
-        this.view = view;
-        this.view.setupView();
+        this.mView = view;
     }
 }

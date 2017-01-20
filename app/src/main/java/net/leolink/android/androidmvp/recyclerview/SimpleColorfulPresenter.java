@@ -1,5 +1,6 @@
 package net.leolink.android.androidmvp.recyclerview;
 
+import android.content.Context;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 
@@ -13,17 +14,17 @@ import net.leolink.android.androidmvp.mvp.view.BaseView;
 public class SimpleColorfulPresenter extends ViewHolderPresenter<Parcelable, SimpleColorfulPresenter.SimpleColorfulView> {
     private int mBgColor;
 
-    public SimpleColorfulPresenter(@NonNull SimpleColorfulView view, int bgColor) {
-        super(view);
+    public SimpleColorfulPresenter(@NonNull SimpleColorfulView view, Context context, int bgColor) {
+        super(view, context);
         this.mBgColor = bgColor;
     }
 
     @Override
-    public void present(Parcelable data, int pos) {
+    public void present(Parcelable data, int pos, int viewType) {
         Item item = (Item) data;
-        view.setTextView(item.text);
-        view.setButtonText(item.button);
-        view.setBackgroundColor(mBgColor);
+        mView.setTextView(item.text);
+        mView.setButtonText(item.button);
+        mView.setBackgroundColor(mBgColor);
     }
 
     public interface SimpleColorfulView extends BaseView {

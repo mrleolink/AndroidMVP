@@ -9,3 +9,6 @@ Also, this sample proposes a solution to preserve nested RecyclerView's state (m
 
 # Demo Video
 https://www.youtube.com/watch?v=CV5gSx8jnys
+
+# TODO
+- Update sample project to reflect all the use cases of the all MVP classes.
